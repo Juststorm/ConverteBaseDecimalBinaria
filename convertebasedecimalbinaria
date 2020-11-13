@@ -1,0 +1,56 @@
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.*;
+
+public class ConverteBaseDecimalBinaria {
+
+    public static void main(String[] args) {
+        Scanner S = new Scanner(System.in);
+        
+        int N;
+        
+        String Result;
+        
+        System.out.print("Digite um número: ");
+        N = S.nextInt();
+        
+        Result = Converte(N);
+        
+        System.out.printf("%1$d em Binário é %2$s\n\n", N, Result);
+        
+    }
+    
+    static String Converte(int n) 
+    {
+        String R = "";
+        
+        while (n/2 >= 1)
+        {
+            R = (n % 2) + R;            
+            n = n / 2;           
+        }
+        
+        R = (n % 2) + R;
+        
+        return R;
+        
+    }
+       
+    static void ConsoleClear() {
+        try {
+            Robot robot = new Robot();
+
+            robot.setAutoDelay(5);
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_L);
+
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.keyRelease(KeyEvent.VK_L);
+
+        } catch (AWTException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    
+}
